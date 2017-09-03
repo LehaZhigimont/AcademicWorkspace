@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+@SuppressWarnings("serial")
 public class Road extends JPanel implements ActionListener, Runnable  {
 	
 	Timer mainTimer = new Timer(20, this);

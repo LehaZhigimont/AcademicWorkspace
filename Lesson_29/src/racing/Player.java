@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 public class Player {
 	

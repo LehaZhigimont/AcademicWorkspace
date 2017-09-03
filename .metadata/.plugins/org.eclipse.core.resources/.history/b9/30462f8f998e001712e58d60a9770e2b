@@ -1,0 +1,23 @@
+package calculator;
+
+import java.util.LinkedList;
+
+public class Core {
+	private static final String OPERATORS = "+-";
+
+	LinkedList<String> array = new LinkedList<String>();
+	int digitStartIdx = 1;
+	double result = 0;
+
+	if(exp.charAt(0)=='-')
+	{
+		array.add(0, "-");
+	}else
+	{
+		array.add(0, "+");
+		if (exp.charAt(0) != '+') {
+			exp = "+" + exp;
+		}
+	}
+
+}

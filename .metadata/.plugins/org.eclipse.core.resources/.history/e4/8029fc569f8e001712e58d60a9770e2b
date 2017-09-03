@@ -1,0 +1,21 @@
+package calculator;
+
+import java.util.LinkedList;
+
+public class Core {
+	private static final String OPERATORS = "+-";
+
+	//int digitStartIdx = 1;
+	//double result = 0;
+	
+	public String set(int digit, String subString){
+		if(subString != null){
+			subString = subString + digit ;
+		}
+		
+		return subString;
+	}
+			
+	
+
+}

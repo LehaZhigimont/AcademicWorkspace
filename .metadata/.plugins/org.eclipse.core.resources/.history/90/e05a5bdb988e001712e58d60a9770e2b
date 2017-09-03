@@ -1,0 +1,17 @@
+package calculator;
+
+public class Main {
+
+	public static void main(String[] args) {
+		CalculatorModel calc = new Calculator();
+		calc.enterDigit(9);
+		calc.enterDigit('.');
+		calc.plus();
+		calc..eneterDigit(1);
+		syso(calc);    //1
+		calc..minus()   
+		syso(calc);   //10
+
+	}
+
+}

@@ -1,0 +1,100 @@
+package calculator;
+
+public class Calculator  implements CalculatorModel{
+
+	@Override
+	public void plus() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void minus() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void multiply() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void divide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void plusMinus() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void inverseNumbeer() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void equalsNow() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void prosent() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sqrt() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterDigit(char digit) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterDigit(int digit) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void CE() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void C() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public double calculateExpression(String exp) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double callJavaMath(String methodMain, Object[] args) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public String toString(){
+		return "error";
+	}
+
+}

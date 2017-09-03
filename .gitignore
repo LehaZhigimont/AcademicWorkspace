@@ -4,6 +4,7 @@
 #Other files
 *.lock
 *.gen
+.metadata.*
 
 # Log file
 *.log

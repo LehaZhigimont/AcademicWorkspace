@@ -1,0 +1,111 @@
+package calculator;
+
+import java.util.LinkedList;
+
+public class Calculator  implements CalculatorModel{
+	
+	private static final String OPERATORS = "+-";
+	private static final String NUMBERS = "0123456789";
+	private double result = 0;
+	
+	LinkedList<String> exp = new LinkedList<String>();
+	
+
+	@Override
+	public void plus() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void minus() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void multiply() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void divide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void plusMinus() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void inverseNumbeer() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void equalsNow() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void prosent() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sqrt() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterDigit(char digit) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enterDigit(int digit) {
+		if(exp.getLast()!=null){
+			exp.addLast(String.valueOf(digit));
+		}
+		
+	}
+
+	@Override
+	public void CE() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void C() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public double calculateExpression(String exp) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double callJavaMath(String methodMain, Object[] args) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public String toString(){
+		return "error";
+	}
+
+}
