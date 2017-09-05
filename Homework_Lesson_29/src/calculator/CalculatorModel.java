@@ -31,8 +31,13 @@ public interface CalculatorModel {
 	void sqrt();
 	void enterDigit(char digit);
 	void enterDigit(int digit);
-	void CE();
-	void C();
+	void clearError();//clear error
+	void clear();//clear
+	void deleteLast();
+	void memoryRestore();
+	void memorySave();
+	void memoryClear();
+	
 	
 	//дополнителные методы
 	double calculateExpression(String exp);

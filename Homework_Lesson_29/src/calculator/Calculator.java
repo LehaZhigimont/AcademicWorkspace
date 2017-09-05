@@ -90,18 +90,6 @@ public class Calculator implements CalculatorModel {
 	}
 
 	@Override
-	public void CE() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void C() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public double calculateExpression(String exp) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -113,10 +101,47 @@ public class Calculator implements CalculatorModel {
 		return 0;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public String toString() {
 		String print = null;
 		return print.valueOf(result);
+	}
+
+	@Override
+	public void clearError() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteLast() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void memoryRestore() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void memorySave() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void memoryClear() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
