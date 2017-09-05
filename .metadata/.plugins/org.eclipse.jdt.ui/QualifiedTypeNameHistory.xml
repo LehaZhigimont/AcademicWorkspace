@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="calculator.CalculatorModel"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="javafx.util.converter.NumberStringConverter"/>
+<fullyQualifiedTypeName name="calculator.CalculatorTest"/>
+<fullyQualifiedTypeName name="calculator.CalculatorModel"/>
+<fullyQualifiedTypeName name="com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default"/>
 </qualifiedTypeNameHistroy>

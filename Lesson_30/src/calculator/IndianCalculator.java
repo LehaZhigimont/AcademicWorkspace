@@ -2,10 +2,42 @@ package calculator;
 
 public class IndianCalculator implements CalculatorModel {
 
+	private String screen = "";
+
+	private String history = "";
+
+	// последняя введеная операция
+	private char lastOperatorToApply = '0';
+
+	// вводилось рание или является результатом преведущей операции
+	private String lastResultInMemory = "";
+
+	// введеное сейчас число
+	private String currentNumber = "";
+
 	@Override
 	public void plus() {
-		// TODO Auto-generated method stub
+				if (lastOperatorToApply != 0) {
+			lastResultInMemory = applyLastOperation().toString();
+		}
+		lastResultInMemory = currentNumber;
+		currentNumber = "0";
+		lastOperatorToApply = '+';
+	}
 
+	private Double applyLastOperation() {
+		switch (lastOperatorToApply) {
+		case '+':
+			return Double.parseDouble(lastResultInMemory) + Double.parseDouble(currentNumber);
+		case '-':
+			return Double.parseDouble(lastResultInMemory) - Double.parseDouble(currentNumber);
+		case '/':
+			return Double.parseDouble(lastResultInMemory) * Double.parseDouble(currentNumber);
+		case '*':
+			return Double.parseDouble(lastResultInMemory) / Double.parseDouble(currentNumber);
+		default:
+			return 0d;
+		}
 	}
 
 	@Override
@@ -58,14 +90,15 @@ public class IndianCalculator implements CalculatorModel {
 
 	@Override
 	public void enterDigit(char digit) {
-		// TODO Auto-generated method stub
-
+		currentNumber = currentNumber + digit;
+		screen = currentNumber;
+		screen = screen + digit;
 	}
 
 	@Override
 	public void enterDigit(int digit) {
-		// TODO Auto-generated method stub
-
+		currentNumber = currentNumber + digit;
+		screen = screen + digit;
 	}
 
 	@Override
@@ -118,10 +151,7 @@ public class IndianCalculator implements CalculatorModel {
 
 	@Override
 	public String toString() {
-		if (Math.random() > 0.5d)
-			return "10";
-		else
-			return "11";
+		return screen;
 
 	}
 }
