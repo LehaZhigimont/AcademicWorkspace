@@ -1,0 +1,23 @@
+package tree;
+
+public class TreeShagoSet implements ShagoSet {
+
+	@Override
+	public void add(Object element) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remove(Object element) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean contains(Object element) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

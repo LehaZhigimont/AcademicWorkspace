@@ -6,4 +6,8 @@
 <fullyQualifiedTypeName name="calculator.CalculatorTest"/>
 <fullyQualifiedTypeName name="calculator.CalculatorModel"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
 </qualifiedTypeNameHistroy>

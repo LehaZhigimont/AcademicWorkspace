@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class SetMapHash {
-	Set s = new HashSet();
+	Set<String> s = new HashSet<String>();
 	public static void main(String[] args) {
 		System.out.println();
 		
