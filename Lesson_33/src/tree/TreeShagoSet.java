@@ -38,10 +38,10 @@ public class TreeShagoSet<OTHER_TYPE> implements ShagoSet<OTHER_TYPE> {
 
 		Node<OTHER_TYPE> tempNode = root;
 		while (true) {
-			if (comparator.compare(element, root.value) == 0) {
+			if (comparator.compare(element, tempNode.value) == 0) {
 				return;
 			}
-			if (comparator.compare(element, root.value) > 0) {
+			if (comparator.compare(element, tempNode.value) > 0) {
 				if (tempNode.right == null) {
 					tempNode.right = newNode;
 					break;

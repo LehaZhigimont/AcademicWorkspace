@@ -19,13 +19,14 @@ public class Zoo {
 	 */
 	public void kupiSlona() {
 		boolean firstCall = false;
-		if (!firstCall) {
-			System.out.println("Купи слона");
-			firstCall = true;
-		}else{
-			System.out.println("Все так говорят, а ты купи слона");
+		while (true) {
+			if (!firstCall) {
+				System.out.println("Купи слона");
+				firstCall = true;
+			} else {
+				System.out.println("Все так говорят, а ты купи слона");
+			}
 		}
-		kupiSlona();
 	}
 
 	public void buyElephant(Elephant elephant) {
