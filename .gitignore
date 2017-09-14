@@ -5,6 +5,7 @@
 *.lock
 *.gen
 /.metadata/
+/.recommenders/
 
 # Log file
 *.log
