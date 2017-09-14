@@ -4,9 +4,35 @@
 #Other files
 *.lock
 *.gen
+
 #Folders
-/?metadata/*
+.metadata/*
+.metadata/
+/.metadata/*
+/.metadata/
+\.metdata/*
+\.metdata/
+/\.metdata/*
+/\.metdata/
+/?metdata/*
+/?metdata/
+?metdata/*
+?metdata/
+
+.recommenders/*
+.recommenders/
+/recommenders/*
+/recommenders/
+\.recommenders/*
+\.recommenders/
+/\.recommenders/*
+/\.recommenders/
 /?recommenders/*
+/?recommenders/
+?recommenders/*
+?recommenders/
+
+/?metadata/?plugins/*
 
 # Log file
 *.log
