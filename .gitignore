@@ -4,8 +4,9 @@
 #Other files
 *.lock
 *.gen
-/.metadata/
-/.recommenders/
+#Folders
+/?metadata/*
+/?recommenders/*
 
 # Log file
 *.log
