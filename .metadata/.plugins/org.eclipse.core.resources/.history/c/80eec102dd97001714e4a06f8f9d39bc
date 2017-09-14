@@ -1,9 +1,0 @@
-package examples32.Tree;
-
-public interface ShagoSet<T> {
-	
-	void add (T element);
-	void remove (T element);
-	boolean contains (T element);
-
-}

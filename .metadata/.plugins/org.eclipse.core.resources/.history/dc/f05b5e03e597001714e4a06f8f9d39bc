@@ -1,9 +1,0 @@
-package tree;
-
-public interface ShagoSet<O> {
-	
-	void add (O element);
-	void remove (O element);
-	boolean contains (O element);
-
-}
