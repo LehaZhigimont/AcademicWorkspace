@@ -37,7 +37,7 @@ public class Player {
 		s += v;
 		v += dv;
 		if (v <= 0) v = 0;
-		if (v >= MAX_V) v = MAX_V;
+		//if (v >= MAX_V) v = MAX_V;
 		y -= dy;
 		if (y <= MAX_TOP) y = MAX_TOP;
 		if (y >= MAX_BOTTOM) y = MAX_BOTTOM;
