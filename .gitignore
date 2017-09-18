@@ -6,7 +6,7 @@
 *.gen
 
 #Folders
-/.metadata/*
+/.metadata/.plugins/*
 /.recommenders/*
 /RemoteSystemsTempFiles/*
 
