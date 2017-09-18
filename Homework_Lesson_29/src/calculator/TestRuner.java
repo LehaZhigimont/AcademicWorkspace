@@ -40,7 +40,7 @@ public class TestRuner {
 		CalculatorTest.test5dot(c);
 		CalculatorTest.test6dot(c);
 	}
-
+ 
 	private static class CalculatorTest {
 		// Test for plus***************************************************
 		public static void test1Plus(CalculatorModel c) {

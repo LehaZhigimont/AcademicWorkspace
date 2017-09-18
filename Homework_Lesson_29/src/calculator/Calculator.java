@@ -162,6 +162,7 @@ public class Calculator implements CalculatorModel {
 		}
 	}
 
+
 	// Don't test
 	@Override
 	public void plusMinus() {
