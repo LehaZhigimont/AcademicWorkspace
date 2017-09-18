@@ -3,237 +3,166 @@ package calculator;
 import java.util.LinkedList;
 
 public class Calculator implements CalculatorModel {
-	private static final String NUMBERS = "0123456789";
+	private static final String NUMBERS = "0123456789.";
 
-	private LinkedList<String> history = new LinkedList();
+	private LinkedList<String> history = new LinkedList<String>();
 	private String memory = "";
 	private String value = "";
 	private String screen = "";
 	private String previousValue = "";
 	private char operator = '0';
-	private boolean flag = true;
 
-	/*
-	 * Done 100%
-	 */
+	// Done
 	@Override
 	public void plus() {
-		// Если преведушее значение пустое, записать текущие в преведушие,
-		// текушие затереть.
-		// Если текушие значение пустое, выполнить сложение преведущих. Иначе
-		// сложить текущие и преведущие.
-
-		if (previousValue.equals("")) {
-
-			operator = '+';
-			previousValue = value;
-			history.add(previousValue);
-			//value = "";
-
-			// history for operator
-			if (NUMBERS.contains(history.getLast())) {
-				history.add("" + operator);
-			} else {
-				if (!history.getLast().equals("+")) {
-					history.set((history.size() - 1), "" + operator);
-				}
-			}
-			
-		} else {
-			if (value.equals("")) {
-				if (!history.getLast().equals("+")) {
-					toIntegers(value);
-					history.add("" + operator + value);
-				} else {
-					toIntegers(value);
-					history.add("" + previousValue);
-				}
-				value = "" + (Double.parseDouble(previousValue) + Double.parseDouble(previousValue));
-				previousValue = "";
-				screen = value;
-				toIntegers(value);
-
-			} else {
-				if (!history.getLast().equals("+")) {
-					toIntegers(value);
-					history.add("" + operator + value);
-				} else {
-					toIntegers(value);
-					history.add("" + value);
-				}
-				value = "" + (Double.parseDouble(previousValue) + Double.parseDouble(value));
-				previousValue = "";
-				screen = value;
-				toIntegers(value);
-			}
-		}
-	}
-
-	/*
-	 * Done 100%
-	 */
-	@Override
-	public void minus() {
-		// Если преведушее значение пустое, записать текущие в преведушие,
-		// текушие затереть.
-		// Если текушие значение пустое, выполнить вычитание преведущих. Иначе
-		// вычесть текущие и преведущие.
-
 		if (previousValue.equals("")) {
 
 			operator = '+';
 			previousValue = value;
 			history.add(previousValue);
 			value = "";
+			// history
+			if (NUMBERS.contains(history.getLast().substring(history.getLast().length()-1))) {
+				history.add("" + operator);
+			} else {
+				if (!history.getLast().equals("+")) {
+					history.set((history.size() - 1), "" + operator);
+				}
+			}
 
-			// history for operator
-			if (NUMBERS.contains(history.getLast())) {
+		} else {
+			/*
+			 * Неудачная попытка сделать что бы много раз нажимать + if
+			 * (value.equals("")) { if (!history.getLast().equals("+")) {
+			 * history.add("" + operator + toIntegers(previousValue)); } else {
+			 * history.add("" + toIntegers(previousValue)); }
+			 * 
+			 * value = "" + (Double.parseDouble(previousValue) +
+			 * Double.parseDouble(previousValue)); screen =
+			 * toIntegers(previousValue); value = "";
+			 * 
+			 * } else {
+			 */
+			if (!value.equals("")) {
+				// history
+				if (!history.getLast().equals("+")) {
+					history.add("" + operator + toIntegers(value));
+				} else {
+					history.add("" + toIntegers(value));
+				}
+				// plus
+				previousValue = "" + (Double.parseDouble(previousValue) + Double.parseDouble(value));
+				screen = toIntegers(previousValue);
+				value = "";
+			}
+		}
+	}
+
+	// Don't test
+	@Override
+	public void minus() {
+		if (previousValue.equals("")) {
+
+			operator = '-';
+			previousValue = value;
+			history.add(previousValue);
+			value = "";
+			// history
+			if (NUMBERS.contains(history.getLast().substring(history.getLast().length()-1))) {
 				history.add("" + operator);
 			} else {
 				if (!history.getLast().equals("-")) {
 					history.set((history.size() - 1), "" + operator);
 				}
 			}
+
 		} else {
-			if (value.equals("")) {
-				if (!history.getLast().equals("+")) {
-					toIntegers(value);
-					history.add("" + operator + value);
+
+			if (!value.equals("")) {
+				// history
+				if (!history.getLast().equals("-")) {
+					history.add("" + operator + toIntegers(value));
 				} else {
-					toIntegers(value);
-					history.add("" + value);
+					history.add("" + toIntegers(value));
 				}
-				value = "" + (Double.parseDouble(previousValue) - Double.parseDouble(previousValue));
-				previousValue = "";
-				screen = value;
-				toIntegers(value);
-			} else {
-				if (!history.getLast().equals("+")) {
-					toIntegers(value);
-					history.add("" + operator + value);
-				} else {
-					toIntegers(value);
-					history.add("" + value);
-				}
-				value = "" + (Double.parseDouble(previousValue) - Double.parseDouble(value));
-				previousValue = "";
-				screen = value;
-				toIntegers(value);
+				// minus
+				previousValue = "" + (Double.parseDouble(previousValue) - Double.parseDouble(value));
+				screen = toIntegers(previousValue);
+				value = "";
 			}
 		}
 	}
 
-	/*
-	 * Done 100% (non-Javadoc)
-	 */
 	@Override
 	public void multiply() {
-		// Если преведушее значение пустое, записать текущие в преведушие,
-		// текушие затереть.
-		// Если текушие значение пустое, выполнить умножение преведущих. Иначе
-		// умнжить текущие и преведущие.
-
 		if (previousValue.equals("")) {
 
 			operator = '*';
 			previousValue = value;
 			history.add(previousValue);
 			value = "";
-
-			// history for operator
-			if (NUMBERS.contains(history.getLast())) {
+			// history
+			if (NUMBERS.contains(history.getLast().substring(history.getLast().length()-1))) {
 				history.add("" + operator);
 			} else {
-				if (!history.getLast().equals("+")) {
-					history.set((history.size() - 1), "" + operator);
+				if (!history.getLast().equals("*")) {
+					history.set((history.size()-1), "" + operator);
 				}
 			}
+
 		} else {
-			if (value.equals("")) {
-				if (!history.getLast().equals("+")) {
-					toIntegers(value);
-					history.add("" + operator + value);
+
+			if (!value.equals("")) {
+				// history
+				if (!history.getLast().equals("*")) {
+					history.add("" + operator + toIntegers(value));
 				} else {
-					toIntegers(value);
-					history.add("" + value);
+					history.add("" + toIntegers(value));
 				}
-				value = "" + (Double.parseDouble(previousValue) * Double.parseDouble(previousValue));
-				previousValue = "";
-				screen = value;
-				toIntegers(value);
-			} else {
-				if (!history.getLast().equals("+")) {
-					toIntegers(value);
-					history.add("" + operator + value);
-				} else {
-					toIntegers(value);
-					history.add("" + value);
-				}
-				value = "" + (Double.parseDouble(previousValue) * Double.parseDouble(value));
-				previousValue = "";
-				screen = value;
-				toIntegers(value);
+				// multiply
+				previousValue = "" + (Double.parseDouble(previousValue) * Double.parseDouble(value));
+				screen = toIntegers(previousValue);
+				value = "";
 			}
 		}
 	}
 
-	/*
-	 * Done ?% (non-Javadoc)
-	 */
+	// Don't test
 	@Override
 	public void divide() {
-		// Если преведушее значение пустое, записать текущие в преведушие,
-		// текушие затереть.
-		// Если текушие значение пустое, выполнить деление преведущих. Иначе
-		// делить текущие и преведущие.
-
 		if (previousValue.equals("")) {
 
 			operator = '/';
 			previousValue = value;
 			history.add(previousValue);
 			value = "";
-
-			// history for operator
-			if (NUMBERS.contains(history.getLast())) {
+			// history
+			if (NUMBERS.contains(history.getLast().substring(history.getLast().length()-1))) {
 				history.add("" + operator);
 			} else {
-				if (!history.getLast().equals("+")) {
+				if (!history.getLast().equals("/")) {
 					history.set((history.size() - 1), "" + operator);
 				}
 			}
+
 		} else {
-			if (value.equals("")) {
-				if (!history.getLast().equals("+")) {
-					toIntegers(value);
-					history.add("" + operator + value);
+
+			if (!value.equals("")) {
+				// history
+				if (!history.getLast().equals("/")) {
+					history.add("" + operator + toIntegers(value));
 				} else {
-					toIntegers(value);
-					history.add("" + value);
+					history.add("" + toIntegers(value));
 				}
-				value = "" + (Double.parseDouble(previousValue) / Double.parseDouble(previousValue));
-				previousValue = "";
-				toIntegers(value);
-			} else {
-				if (!history.getLast().equals("+")) {
-					toIntegers(value);
-					screen = value;
-					history.add("" + operator + value);
-				} else {
-					toIntegers(value);
-					history.add("" + value);
-				}
-				value = "" + (Double.parseDouble(previousValue) / Double.parseDouble(value));
-				previousValue = "";
-				screen = value;
-				toIntegers(value);
+				// divide
+				previousValue = "" + (Double.parseDouble(previousValue) / Double.parseDouble(value));
+				screen = toIntegers(previousValue);
+				value = "";
 			}
 		}
 	}
 
-	/*
-	 * Done 100% (non-Javadoc)
-	 */
+	// Don't test
 	@Override
 	public void plusMinus() {
 		if (value.charAt(0) != '-') {
@@ -241,198 +170,148 @@ public class Calculator implements CalculatorModel {
 		} else {
 			value = value.substring(1, value.length() - 1);
 		}
-
 	}
 
-	/*
-	 * Done 0% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
-	 */
 	@Override
 	public void inverseNumbeer() {
 		// TODO Auto-generated method stub
-
 	}
 
-	/*
-	 * Done 20% (non-Javadoc)
-	 */
+	// Done
 	@Override
 	public void equalsNow() {
+		//FIXME Сделать так чтобы '=' не выводмлось если небыло введено 2 значение
 		switch (operator) {
 		case '+':
 			plus();
+			if(!history.getLast().equals("+")){
 			history.add("=");
-			history.add(value);
+			history.add(toIntegers(previousValue));
+			}
 			break;
 		case '-':
 			minus();
-			history.add("=");
-			history.add(value);
+			if(!history.getLast().equals("-")){
+				history.add("=");
+				history.add(toIntegers(previousValue));
+				}
 			break;
 		case '*':
 			multiply();
-			history.add("=");
-			history.add(value);
+			if(!history.getLast().equals("*")){
+				history.add("=");
+				history.add(toIntegers(previousValue));
+				}
 			break;
 		case '/':
 			divide();
-			history.add("=");
-			history.add(value);
+			if(!history.getLast().equals("/")){
+				history.add("=");
+				history.add(toIntegers(previousValue));
+				}
 			break;
-
 		default:
 			break;
 		}
-		flag = false;
 	}
 
-	/*
-	 * Done 0% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
-	 */
 	@Override
 	public void prosent() {
 		// TODO Auto-generated method stub
 
 	}
 
-	/*
-	 * Done 0% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
-	 */
 	@Override
 	public void sqrt() {
 		// TODO Auto-generated method stub
 
 	}
 
-	/*
-	 * Done 100%
-	 */
+	// Done
 	@Override
 	public void enterDigit(char digit) {
-		if (flag) {
-			value = value + digit;
-		} else {
-			value = "" + digit;
-			flag = true;
-		}
+		value = value + digit;
+		screen = value;
 	}
 
-	/*
-	 * Done 100%
-	 */
+	// Done
 	@Override
 	public void enterDigit(int digit) {
-		if (flag) {
-			value = value + digit;
-		} else {
-			value = "" + digit;
-			flag = true;
-		}
+		value = value + digit;
+		screen = value;
 	}
 
-	/*
-	 * Done 100%
-	 */
+	// Don't test
 	@Override
 	public void clearError() {
 		value = "";
 	}
 
-	/*
-	 * Done 100%
-	 */
+	// Don't test
 	@Override
 	public void clear() {
 		history.clear();
+		screen = "";
 		memory = "";
 		value = "";
 		previousValue = "";
 		operator = '0';
 	}
 
-	/*
-	 * Done 0% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
-	 */
+	// Don't test
 	@Override
 	public void deleteLast() {
-		// TODO Auto-generated method stub
-
+		value = value.substring(0, value.length() - 1);
 	}
 
-	/*
-	 * Done 100% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
-	 */
+	// Don't test
 	@Override
 	public void memoryRestore() {
 		value = memory;
 	}
 
-	/*
-	 * Done 100% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
-	 */
+	// Don't test
 	@Override
 	public void memorySave() {
-		//
 		memory = value;
 	}
 
-	/*
-	 * Done 100% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
-	 */
+	// Don't test
 	@Override
 	public void memoryClear() {
-		//
 		memory = "";
 	}
 
-	/*
-	 * Done 0% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
-	 */
 	@Override
 	public double calculateExpression(String exp) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	/*
-	 * Done 0% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
-	 */
 	@Override
 	public double callJavaMath(String methodName, Object[] args) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	/*
-	 * Done 50% (non-Javadoc)
-	 */
+	// Done
 	@Override
 	public String toString() {
-		return history + "\n" + value;
-		// TODO Реализовать вывод целых чисел, без остатка
+		String historyToString = "";
+		for (int i = 0; i < history.size(); i++) {
+			historyToString += history.get(i);
+		}
+		return "[" + historyToString + "]" + "\n" + toIntegers(screen) + "\n";
 	}
 
+	// Done
 	private String toIntegers(String value) {
-		// TODO сделать метод.
-		// если число не имеет остатка привести к целому виду
+		if (value.length() > 2) {
+			String temp = value.substring((value.length() - 2), value.length());
+			if (temp.equals(".0")) {
+				value = value.substring(0, (value.length() - 2));
+			}
+		}
 		return value;
 	}
 }
