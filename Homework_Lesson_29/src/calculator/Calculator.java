@@ -5,14 +5,16 @@ import java.util.LinkedList;
 public class Calculator implements CalculatorModel {
 	private static final String NUMBERS = "0123456789";
 
-	LinkedList<String> history = new LinkedList();
+	private LinkedList<String> history = new LinkedList();
 	private String memory = "";
 	private String value = "";
+	private String screen = "";
 	private String previousValue = "";
 	private char operator = '0';
+	private boolean flag = true;
 
 	/*
-	 * Done 100% (non-Javadoc)
+	 * Done 100%
 	 */
 	@Override
 	public void plus() {
@@ -24,6 +26,116 @@ public class Calculator implements CalculatorModel {
 		if (previousValue.equals("")) {
 
 			operator = '+';
+			previousValue = value;
+			history.add(previousValue);
+			//value = "";
+
+			// history for operator
+			if (NUMBERS.contains(history.getLast())) {
+				history.add("" + operator);
+			} else {
+				if (!history.getLast().equals("+")) {
+					history.set((history.size() - 1), "" + operator);
+				}
+			}
+			
+		} else {
+			if (value.equals("")) {
+				if (!history.getLast().equals("+")) {
+					toIntegers(value);
+					history.add("" + operator + value);
+				} else {
+					toIntegers(value);
+					history.add("" + previousValue);
+				}
+				value = "" + (Double.parseDouble(previousValue) + Double.parseDouble(previousValue));
+				previousValue = "";
+				screen = value;
+				toIntegers(value);
+
+			} else {
+				if (!history.getLast().equals("+")) {
+					toIntegers(value);
+					history.add("" + operator + value);
+				} else {
+					toIntegers(value);
+					history.add("" + value);
+				}
+				value = "" + (Double.parseDouble(previousValue) + Double.parseDouble(value));
+				previousValue = "";
+				screen = value;
+				toIntegers(value);
+			}
+		}
+	}
+
+	/*
+	 * Done 100%
+	 */
+	@Override
+	public void minus() {
+		// Если преведушее значение пустое, записать текущие в преведушие,
+		// текушие затереть.
+		// Если текушие значение пустое, выполнить вычитание преведущих. Иначе
+		// вычесть текущие и преведущие.
+
+		if (previousValue.equals("")) {
+
+			operator = '+';
+			previousValue = value;
+			history.add(previousValue);
+			value = "";
+
+			// history for operator
+			if (NUMBERS.contains(history.getLast())) {
+				history.add("" + operator);
+			} else {
+				if (!history.getLast().equals("-")) {
+					history.set((history.size() - 1), "" + operator);
+				}
+			}
+		} else {
+			if (value.equals("")) {
+				if (!history.getLast().equals("+")) {
+					toIntegers(value);
+					history.add("" + operator + value);
+				} else {
+					toIntegers(value);
+					history.add("" + value);
+				}
+				value = "" + (Double.parseDouble(previousValue) - Double.parseDouble(previousValue));
+				previousValue = "";
+				screen = value;
+				toIntegers(value);
+			} else {
+				if (!history.getLast().equals("+")) {
+					toIntegers(value);
+					history.add("" + operator + value);
+				} else {
+					toIntegers(value);
+					history.add("" + value);
+				}
+				value = "" + (Double.parseDouble(previousValue) - Double.parseDouble(value));
+				previousValue = "";
+				screen = value;
+				toIntegers(value);
+			}
+		}
+	}
+
+	/*
+	 * Done 100% (non-Javadoc)
+	 */
+	@Override
+	public void multiply() {
+		// Если преведушее значение пустое, записать текущие в преведушие,
+		// текушие затереть.
+		// Если текушие значение пустое, выполнить умножение преведущих. Иначе
+		// умнжить текущие и преведущие.
+
+		if (previousValue.equals("")) {
+
+			operator = '*';
 			previousValue = value;
 			history.add(previousValue);
 			value = "";
@@ -45,116 +157,22 @@ public class Calculator implements CalculatorModel {
 					toIntegers(value);
 					history.add("" + value);
 				}
-				value = "" + (Double.parseDouble(previousValue) + Double.parseDouble(previousValue));
-				previousValue = "";
-				toIntegers(value);
-			} else {
-				if (!history.getLast().equals("+")) {
-					toIntegers(value);
-					history.add("" + operator + value);
-				} else {
-					toIntegers(value);
-					history.add("" + value);
-				}
-				value = "" + (Double.parseDouble(previousValue) + Double.parseDouble(value));
-				previousValue = "";
-				toIntegers(value);
-			}
-		}
-	}
-
-	/*
-	 * Done ?% (non-Javadoc)
-	 */
-	@Override
-	public void minus() {
-		// Если преведушее значение пустое, записать текущие в преведушие,
-		// текушие затереть.
-		// Если текушие значение пустое, выполнить вычитание преведущих. Иначе
-		// вычесть текущие и преведущие.
-
-		if (previousValue.equals("")) {
-			operator = '-';
-			previousValue = value;
-			value = "";
-
-			// history for operator
-			if (NUMBERS.contains(history.getLast())) {
-				history.add("" + operator);
-			} else {
-				if (!history.getLast().equals("+")) {
-					history.set((history.size() - 1), "" + operator);
-				}
-			}
-		} else {
-			if (value.equals("")) {
-				value = "" + (Double.parseDouble(previousValue) - Double.parseDouble(previousValue));
-
-				if (!history.getLast().equals("+")) {
-					history.add("" + operator + value);
-				} else {
-					history.add("" + value);
-				}
-
-				previousValue = "";
-			} else {
-				value = "" + (Double.parseDouble(previousValue) - Double.parseDouble(value));
-
-				if (!history.getLast().equals("+")) {
-					history.add("" + operator + value);
-				} else {
-					history.add("" + value);
-				}
-
-				previousValue = "";
-			}
-		}
-	}
-
-	/*
-	 * Done ?% (non-Javadoc)
-	 */
-	@Override
-	public void multiply() {
-		// Если преведушее значение пустое, записать текущие в преведушие,
-		// текушие затереть.
-		// Если текушие значение пустое, выполнить умножение преведущих. Иначе
-		// умнжить текущие и преведущие.
-
-		if (previousValue.equals("")) {
-			operator = '*';
-			previousValue = value;
-			value = "";
-
-			// history for operator
-			if (NUMBERS.contains(history.getLast())) {
-				history.add("" + operator);
-			} else {
-				if (!history.getLast().equals("+")) {
-					history.set((history.size() - 1), "" + operator);
-				}
-			}
-		} else {
-			if (value.equals("")) {
 				value = "" + (Double.parseDouble(previousValue) * Double.parseDouble(previousValue));
-
-				if (!history.getLast().equals("+")) {
-					history.add("" + operator + value);
-				} else {
-					history.add("" + value);
-				}
-
 				previousValue = "";
+				screen = value;
+				toIntegers(value);
 			} else {
-				value = "" + (Double.parseDouble(previousValue) * Double.parseDouble(value));
-
 				if (!history.getLast().equals("+")) {
+					toIntegers(value);
 					history.add("" + operator + value);
 				} else {
+					toIntegers(value);
 					history.add("" + value);
 				}
-
+				value = "" + (Double.parseDouble(previousValue) * Double.parseDouble(value));
 				previousValue = "";
+				screen = value;
+				toIntegers(value);
 			}
 		}
 	}
@@ -170,8 +188,10 @@ public class Calculator implements CalculatorModel {
 		// делить текущие и преведущие.
 
 		if (previousValue.equals("")) {
+
 			operator = '/';
 			previousValue = value;
+			history.add(previousValue);
 			value = "";
 
 			// history for operator
@@ -184,25 +204,29 @@ public class Calculator implements CalculatorModel {
 			}
 		} else {
 			if (value.equals("")) {
+				if (!history.getLast().equals("+")) {
+					toIntegers(value);
+					history.add("" + operator + value);
+				} else {
+					toIntegers(value);
+					history.add("" + value);
+				}
 				value = "" + (Double.parseDouble(previousValue) / Double.parseDouble(previousValue));
-
-				if (!history.getLast().equals("+")) {
-					history.add("" + operator + value);
-				} else {
-					history.add("" + value);
-				}
-
 				previousValue = "";
+				toIntegers(value);
 			} else {
-				value = "" + (Double.parseDouble(previousValue) / Double.parseDouble(value));
-
 				if (!history.getLast().equals("+")) {
+					toIntegers(value);
+					screen = value;
 					history.add("" + operator + value);
 				} else {
+					toIntegers(value);
 					history.add("" + value);
 				}
-
+				value = "" + (Double.parseDouble(previousValue) / Double.parseDouble(value));
 				previousValue = "";
+				screen = value;
+				toIntegers(value);
 			}
 		}
 	}
@@ -239,24 +263,29 @@ public class Calculator implements CalculatorModel {
 		switch (operator) {
 		case '+':
 			plus();
-			history.add("="+value);
+			history.add("=");
+			history.add(value);
 			break;
 		case '-':
 			minus();
-			history.add("="+value);
+			history.add("=");
+			history.add(value);
 			break;
 		case '*':
 			multiply();
-			history.add("="+value);
+			history.add("=");
+			history.add(value);
 			break;
 		case '/':
 			divide();
-			history.add("="+value);
+			history.add("=");
+			history.add(value);
 			break;
 
 		default:
 			break;
 		}
+		flag = false;
 	}
 
 	/*
@@ -282,42 +311,41 @@ public class Calculator implements CalculatorModel {
 	}
 
 	/*
-	 * Done 100% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
+	 * Done 100%
 	 */
 	@Override
 	public void enterDigit(char digit) {
-		value = value + digit;
-
+		if (flag) {
+			value = value + digit;
+		} else {
+			value = "" + digit;
+			flag = true;
+		}
 	}
 
 	/*
-	 * Done 100% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
+	 * Done 100%
 	 */
 	@Override
 	public void enterDigit(int digit) {
-		value = value + digit;
-
+		if (flag) {
+			value = value + digit;
+		} else {
+			value = "" + digit;
+			flag = true;
+		}
 	}
 
 	/*
-	 * Done 100% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
+	 * Done 100%
 	 */
 	@Override
 	public void clearError() {
 		value = "";
-
 	}
 
 	/*
-	 * Done 100% (non-Javadoc)
-	 * 
-	 * @see calculator.CalculatorModel#plus()
+	 * Done 100%
 	 */
 	@Override
 	public void clear() {
@@ -402,9 +430,9 @@ public class Calculator implements CalculatorModel {
 		// TODO Реализовать вывод целых чисел, без остатка
 	}
 
-	private String toIntegers(String value){
-		//TODO сделать метод.
-		//если число не имеет остатка привести к целому виду
-	return value;
+	private String toIntegers(String value) {
+		// TODO сделать метод.
+		// если число не имеет остатка привести к целому виду
+		return value;
 	}
 }
