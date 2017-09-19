@@ -1,23 +1,31 @@
 package notebook;
 
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.Scanner;
 
+/**
+ * Element Notebook
+ * 
+ * @see Notebook
+ * @author Ilya Zhukov
+ */
 public class Note {
-	private static long count = (long) (((Math.random()) * 100)+100);
+	private static long countID = 5000;
 	private long id;
-	private String date;
+	private Date date;//TODO
+	private String dateString;
 	private String text;
 
 	public Note() {
-		count++;
+		countID++;
+		System.out.println("Enter text:\n");
 		writeNote();
+		date = new Date();
 		Date dNote = new Date();
-		//FIXME
-		this.date = "" + dNote.getYear() + "." + dNote.getMonth() + "." + dNote.getDay() + " " + dNote.getHours() + ":"
-				+ dNote.getMinutes() + "\t";
-		this.id = count;
+		this.dateString = "" + (dNote.getYear()+1900) + "." + (dNote.getMonth()+1) + "." + dNote.getDay() + " "
+				+ (dNote.getHours()+1) + ":" + dNote.getMinutes() + "\t";
+		dNote = null;
+		this.id = countID;
 	}
 
 	public void writeNote() {
@@ -25,4 +33,21 @@ public class Note {
 		this.text = scInputNode.nextLine();
 	}
 
+	public static long getCount() {
+		return countID;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public String getDateString() {
+		return dateString;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	
 }

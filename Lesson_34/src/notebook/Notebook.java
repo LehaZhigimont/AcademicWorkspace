@@ -1,106 +1,124 @@
 package notebook;
 
 import java.util.LinkedList;
-import java.util.Scanner;
 
+/**
+ * Model Notebook
+ * 
+ * @author Ilya Zhukov
+ */
 public class Notebook {
-	private LinkedList listRemainder;
-	private LinkedList listNote;
+	private LinkedList<Reminder> listReminder;
+	private LinkedList<Note> listNote;
 
 	public Notebook() {
-		listNote = new LinkedList();
-		listRemainder = new LinkedList();
+
+		listNote = new LinkedList<Note>();
+		listReminder = new LinkedList<Reminder>();
+
 	}
 
 	public void addNote() {
 		Note newNode = new Note();
-		listNote.add(newNode);
+		listNote.addLast(newNode);
 	}
 
-	public void addRemainder() {
-		Remainder newNode = new Remainder();
-		listRemainder.add(newNode);
+	public void addReminder() {
+		Reminder newNode = new Reminder();
+		listReminder.addLast(newNode);
 	}
 
-	public void showNotes() {
-		Scanner scShowNotes = new Scanner(System.in);
-		String choiseShowNotes;
+	public String showNotes() {
+		String string = "";
+		for (int i = 0; i < listNote.size(); i++) {
+			string = string + "ID:" + listNote.get(i).getId() + "\tDate create: " + listNote.get(i).getDateString()
+					+ "\nText:\n" + listNote.get(i).getText() + "\n\n";
+		}
+		return "\n\n\n********Notes*********\n\n" + string + "\n***********************\n";
+	}
 
-		// TODO
-		System.out.println(listNote);
-		while (true) {
-			System.out.println("\n\n\nMENU NOTES");
-			System.out.println("\t1.Add notes\n\t2.Edit note\n\t3.Remove note\n\t4.Exit on top menu\n\n\n");
-			long id;
-			choiseShowNotes = scShowNotes.nextLine();
-			switch (choiseShowNotes) {
-			case ("1"):
-				addNote();
-				break;
-			case ("2"):
-				id = scShowNotes.nextLong();
-				editNote(id);
-				break;
-			case ("3"):
-				id = scShowNotes.nextLong();
-				removeNote(id);
-				break;
-			case ("4"):
-				return;
-			default:
-				break;
+	public String showReminder() {
+		String string = "";
+		for (int i = 0; i < listReminder.size(); i++) {
+			string = string + "ID:" + listReminder.get(i).getId() + "\tDate create: " + listReminder.get(i).getDateString()
+					+ "\tDateReamaider: " + listReminder.get(i).getDateReminder() + "\nRemaider:\n"
+					+ listReminder.get(i).getReminder() + "\n\n";
+		}
+		return "\n\n\n*******Reamaiders******\n\n" + string + "\n***********************\n";
+	}
+
+	public void showNote(long id) {
+		String string = "";
+		for (int i = 0; i < listNote.size(); i++) {
+			if (listNote.get(i).getId() != id) {
+				continue;
+			} else {
+				string = string + "ID:" + listNote.get(i).getId() + "\tDate create: " + listNote.get(i).getDateString()
+						+ "\nText:\n" + listNote.get(i).getText() + "\n\n";
 			}
+			System.out.println(string);
 		}
 	}
 
-	public void showRemainder() {
-		while (true) {
-			Scanner scShowRemainder = new Scanner(System.in);
-			String choiseShowRemainder;
-
-			// TODO
-			System.out.println(listRemainder);
-			System.out.println("\n\n\nMENU REMAINDER");
-			System.out
-					.println("\t1.Add remainder\n\t2.Edit remainder\n\t3.Remove remainder\n\t4.Exit on top menu\n\n\n");
-			long id;
-			choiseShowRemainder = scShowRemainder.nextLine();
-			switch (choiseShowRemainder) {
-			case ("1"):
-				addNote();
-				break;
-			case ("2"):
-				id = scShowRemainder.nextLong();
-				editNote(id);
-				break;
-			case ("3"):
-				id = scShowRemainder.nextLong();
-				removeNote(id);
-				break;
-			case ("4"):
-				return;
-			default:
-				break;
+	public void showRemainder(long id) {
+		String string = "";
+		for (int i = 0; i < listReminder.size(); i++) {
+			if (listReminder.get(i).getId() != id) {
+				continue;
+			} else {
+				string = string + "ID:" + listReminder.get(i).getId() + "\tDate create: "
+						+ listReminder.get(i).getDateString() + "\tDateReamaider: " + listReminder.get(i).getDateReminder()
+						+ "\nRemaider:\n" + listReminder.get(i).getReminder() + "\n\n";
+				System.out.println(string);
 			}
 		}
 	}
-
-	/*
-	 * public void showNotes(long id) { // TODO }
-	 * 
-	 * public void showRemainder(long id) { // TODO }
-	 */
 
 	public void removeNote(long id) {
-		// TODO
+		
+		for (int i = 0; i < listNote.size(); i++) {
+			if (listNote.get(i).getId() != id) {
+				continue;
+			} else {
+				System.out.println("Note: " + listNote.get(i).getId() + " was removed");
+				listNote.remove(i);
+			}
+		}
 	}
 
-	public void removeRemainder(long id) {
-		// TODO
+	public void removeReminder(long id) {
+		
+		for (int i = 0; i < listReminder.size(); i++) {
+			if (listNote.get(i).getId() != id) {
+				continue;
+			} else {
+				System.out.println("Reminder: " + listReminder.get(i).getId() + " was removed");
+				listReminder.remove(i);
+			}
+		}
 	}
 
-	private void editNote(long id) {
-		// TODO
+	public void overwriteNote(long id) {
+		for (int i = 0; i < listNote.size(); i++) {
+			if (listNote.get(i).getId() != id) {
+				continue;
+			} else {
+				System.out.println("Note: " + listNote.get(i).getId() + " ready to overwrite\n\n");
+				listNote.get(i).writeNote();
+			}
+		}
+	}
+	//FIXME
+	public void overwriteReminder(long id) {
+		
+		for (int i = 0; i < listReminder.size(); i++) {
+			if (listReminder.get(i).getId() != id) {
+				continue;
+			} else {
+				System.out.println("Reminder: " + listReminder.get(i).getId() + " ready to overwrite\n\n");
+				listReminder.get(i).writeReminder();
+			}
+		}
 	}
 
 }
