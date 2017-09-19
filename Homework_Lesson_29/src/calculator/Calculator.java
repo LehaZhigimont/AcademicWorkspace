@@ -12,7 +12,9 @@ public class Calculator implements CalculatorModel {
 	private String previousValue = "";
 	private char operator = '0';
 
-	// Done
+	/**
+	 * Плюс
+	 */
 	@Override
 	public void plus() {
 		if (previousValue.equals("")) {
@@ -22,7 +24,7 @@ public class Calculator implements CalculatorModel {
 			history.add(previousValue);
 			value = "";
 			// history
-			if (NUMBERS.contains(history.getLast().substring(history.getLast().length()-1))) {
+			if (NUMBERS.contains(history.getLast().substring(history.getLast().length() - 1))) {
 				history.add("" + operator);
 			} else {
 				if (!history.getLast().equals("+")) {
@@ -58,7 +60,9 @@ public class Calculator implements CalculatorModel {
 		}
 	}
 
-	// Don't test
+	/**
+	 * Минус
+	 */
 	@Override
 	public void minus() {
 		if (previousValue.equals("")) {
@@ -68,7 +72,7 @@ public class Calculator implements CalculatorModel {
 			history.add(previousValue);
 			value = "";
 			// history
-			if (NUMBERS.contains(history.getLast().substring(history.getLast().length()-1))) {
+			if (NUMBERS.contains(history.getLast().substring(history.getLast().length() - 1))) {
 				history.add("" + operator);
 			} else {
 				if (!history.getLast().equals("-")) {
@@ -93,6 +97,9 @@ public class Calculator implements CalculatorModel {
 		}
 	}
 
+	/**
+	 * Умножение
+	 */
 	@Override
 	public void multiply() {
 		if (previousValue.equals("")) {
@@ -102,11 +109,11 @@ public class Calculator implements CalculatorModel {
 			history.add(previousValue);
 			value = "";
 			// history
-			if (NUMBERS.contains(history.getLast().substring(history.getLast().length()-1))) {
+			if (NUMBERS.contains(history.getLast().substring(history.getLast().length() - 1))) {
 				history.add("" + operator);
 			} else {
 				if (!history.getLast().equals("*")) {
-					history.set((history.size()-1), "" + operator);
+					history.set((history.size() - 1), "" + operator);
 				}
 			}
 
@@ -127,7 +134,9 @@ public class Calculator implements CalculatorModel {
 		}
 	}
 
-	// Don't test
+	/**
+	 * Деление
+	 */
 	@Override
 	public void divide() {
 		if (previousValue.equals("")) {
@@ -137,7 +146,7 @@ public class Calculator implements CalculatorModel {
 			history.add(previousValue);
 			value = "";
 			// history
-			if (NUMBERS.contains(history.getLast().substring(history.getLast().length()-1))) {
+			if (NUMBERS.contains(history.getLast().substring(history.getLast().length() - 1))) {
 				history.add("" + operator);
 			} else {
 				if (!history.getLast().equals("/")) {
@@ -162,10 +171,12 @@ public class Calculator implements CalculatorModel {
 		}
 	}
 
-
-	// Don't test
+	/**
+	 * меняет значение вводимого числа на отрицацельное и обратно
+	 */
 	@Override
 	public void plusMinus() {
+		//FIXME имеет баг с комбо вводом
 		if (value.charAt(0) != '-') {
 			value = '-' + value;
 		} else {
@@ -173,82 +184,110 @@ public class Calculator implements CalculatorModel {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void inverseNumbeer() {
 		// TODO Auto-generated method stub
 	}
 
-	// Done
+	/**
+	 * Выполняет введеное выражение
+	 */
 	@Override
 	public void equalsNow() {
-		//FIXME Сделать так чтобы '=' не выводмлось если небыло введено 2 значение
 		switch (operator) {
 		case '+':
 			plus();
-			if(!history.getLast().equals("+")){
-			history.add("=");
-			history.add(toIntegers(previousValue));
+			if (!history.getLast().equals("+")) {
+				history.add("=");
+				history.add(toIntegers(previousValue));
 			}
 			break;
 		case '-':
 			minus();
-			if(!history.getLast().equals("-")){
+			if (!history.getLast().equals("-")) {
 				history.add("=");
 				history.add(toIntegers(previousValue));
-				}
+			}
 			break;
 		case '*':
 			multiply();
-			if(!history.getLast().equals("*")){
+			if (!history.getLast().equals("*")) {
 				history.add("=");
 				history.add(toIntegers(previousValue));
-				}
+			}
 			break;
 		case '/':
 			divide();
-			if(!history.getLast().equals("/")){
+			if (!history.getLast().equals("/")) {
 				history.add("=");
 				history.add(toIntegers(previousValue));
-				}
+			}
 			break;
 		default:
 			break;
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void prosent() {
-		// TODO Auto-generated method stub
+		// TODO prosent()
 
 	}
 
+	/**
+	 * Вычисление квадратного корня
+	 */
 	@Override
 	public void sqrt() {
-		// TODO Auto-generated method stub
-
+		// FIXME Сделать работу со старым значением.
+		if (!value.equals("") || !value.equals("0.") || !value.equals("0")) {
+			value = "" + Math.sqrt(Double.parseDouble(value));
+			screen = value;
+		}
 	}
 
-	// Done
+	/**
+	 * Ввод числа
+	 */
 	@Override
 	public void enterDigit(char digit) {
-		value = value + digit;
-		screen = value;
+		if (value.equals("")) {
+			value = "0.";
+			screen = value;
+		} else {
+			if (!value.contains(".")) {
+				value = value + digit;
+				screen = value;
+			}
+		}
 	}
 
-	// Done
+	/**
+	 * Ввод числа
+	 */
 	@Override
 	public void enterDigit(int digit) {
 		value = value + digit;
 		screen = value;
 	}
 
-	// Don't test
+	/**
+	 * Очищяет введеное значение полностью // Don't test
+	 */
 	@Override
 	public void clearError() {
 		value = "";
 	}
 
-	// Don't test
+	/**
+	 * Очищяет все значения
+	 */
 	@Override
 	public void clear() {
 		history.clear();
@@ -259,43 +298,62 @@ public class Calculator implements CalculatorModel {
 		operator = '0';
 	}
 
-	// Don't test
+	/**
+	 * Удаляет последний символ // Don't test
+	 */
 	@Override
 	public void deleteLast() {
 		value = value.substring(0, value.length() - 1);
 	}
 
-	// Don't test
+	/**
+	 * Чтение памяти //Don't test
+	 */
 	@Override
 	public void memoryRestore() {
 		value = memory;
 	}
 
-	// Don't test
+	/**
+	 * Запись в памть // Don't test
+	 */
 	@Override
 	public void memorySave() {
 		memory = value;
 	}
 
-	// Don't test
+	/**
+	 * Очистка памяти // Don't test
+	 */
 	@Override
 	public void memoryClear() {
 		memory = "";
 	}
 
+	/**
+	 * Возведение в квадрат.
+	 */
+	public void metodSquare() {
+		// FIXME Сделать работу со старым значением.
+		if (!value.equals("") || !value.equals("0.") || !value.equals("0")) {
+			value = "" + Double.parseDouble(value) * Double.parseDouble(value);
+			screen = value;
+		}
+	}
+
 	@Override
 	public double calculateExpression(String exp) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public double callJavaMath(String methodName, Object[] args) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	// Done
+	/**
+	 * Выводит историю(<b>LinkedList history</b>) в одну строку и с переводом стороки результат действий(<b>screen</b>) 
+	 */
 	@Override
 	public String toString() {
 		String historyToString = "";
@@ -305,7 +363,17 @@ public class Calculator implements CalculatorModel {
 		return "[" + historyToString + "]" + "\n" + toIntegers(screen) + "\n";
 	}
 
-	// Done
+	/**
+	 * Целых чисел типа <i>10.0</i> к целочисленому формату. Принимает
+	 * <b>String</b>, проверяет есть ли в конце стороки подстрока <i>".0"</i>.
+	 * Если нет, возвращает изначальное значение, иначе удаляет подстроку
+	 * <i>".0"</i> и возвращает её.
+	 * 
+	 * @param <b>value</b>-принимает
+	 *            <b>String</b>
+	 * @return возвращает тоже значение <b>value</b> или возвращает измененое
+	 *         значение <b>value</b>
+	 */
 	private String toIntegers(String value) {
 		if (value.length() > 2) {
 			String temp = value.substring((value.length() - 2), value.length());
