@@ -1,6 +1,6 @@
 package array;
 
-//TODO есть масив, сдвинуть каждый элемент на K позиций
+/// есть масив, сдвинуть каждый элемент на K позиций
 public class Task {
 
 	public static void printMassiv(int[] massiv) {

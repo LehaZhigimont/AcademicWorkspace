@@ -8,7 +8,6 @@ package casino;
  */
 
 public class Casino {
-	//TODO Create program
 	public static void main(String[] args) {
 		
 

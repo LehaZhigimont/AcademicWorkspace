@@ -219,7 +219,6 @@ public class MyCalc implements CalculatorModel {
 
 	@Override
 	public void clearError() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -270,7 +269,6 @@ public class MyCalc implements CalculatorModel {
 
 	@Override
 	public double callJavaMath(String methodName, Object[] args) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

@@ -49,13 +49,13 @@ public class Treugolnik extends Shape {
 	
 	@Override
 	public double getPerimetr() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
 	@Override
 	public double getArea() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 }

@@ -31,16 +31,20 @@ public class TreeShagoSet<OTHER_TYPE> implements ShagoSet<OTHER_TYPE> {
 		}
 
 		Node<OTHER_TYPE> tempNode = root;
-		while(tempNode.left !=null && tempNode.right !=null){
+		while (tempNode.left != null && tempNode.right != null) {
 			if (comparator.compare(element, root.value) == 0) {
 				return;
 			}
 			if (comparator.compare(element, root.value) > 0) {
-				if(tempNode==null){tempNode.right=newNode;}
+				if (tempNode == null) {
+					tempNode.right = newNode;
+				}
 				tempNode = tempNode.right;
 				break;
 			} else {
-				if(tempNode==null){tempNode.left=newNode;}
+				if (tempNode == null) {
+					tempNode.left = newNode;
+				}
 				tempNode = tempNode.left;
 				break;
 			}
@@ -50,13 +54,12 @@ public class TreeShagoSet<OTHER_TYPE> implements ShagoSet<OTHER_TYPE> {
 
 	@Override
 	public void remove(OTHER_TYPE element) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public boolean contains(OTHER_TYPE element) {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 

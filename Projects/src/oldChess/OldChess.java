@@ -18,7 +18,7 @@ public class OldChess {
 		initBoad();
 		printBord();
 
-		while (true) {// TODO заметить на переменную в условиии
+		while (true) {
 			String move;
 			System.out.println();
 			System.out.println("Choise move (b1-g1):");

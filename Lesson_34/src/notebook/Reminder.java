@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Reminder {
 	private static long countID = 1000;
 	private long id;
-	private Date date;//TODO
+	private Date date;// TODO
 	private String dateString;
 	private String reminder;
 	private String dateReminder;
@@ -31,7 +31,7 @@ public class Reminder {
 		this.id = countID;
 	}
 
-	private void writeDateReminder() {
+	public void writeDateReminder() {
 		System.out.println("Enter date reminder(yyyy.mm.dd hh:mm)\n");
 		Scanner scInputDateReminder = new Scanner(System.in);
 
@@ -72,6 +72,10 @@ public class Reminder {
 
 	public String getDateReminder() {
 		return dateReminder;
+	}
+
+	public Date getDate() {
+		return date;
 	}
 
 }

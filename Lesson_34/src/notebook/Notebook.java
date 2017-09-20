@@ -1,6 +1,8 @@
 package notebook;
 
+import java.util.Date;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * Model Notebook
@@ -10,6 +12,7 @@ import java.util.LinkedList;
 public class Notebook {
 	private LinkedList<Reminder> listReminder;
 	private LinkedList<Note> listNote;
+	Scanner scNB = new Scanner(System.in);
 
 	public Notebook() {
 
@@ -40,9 +43,9 @@ public class Notebook {
 	public String showReminder() {
 		String string = "";
 		for (int i = 0; i < listReminder.size(); i++) {
-			string = string + "ID:" + listReminder.get(i).getId() + "\tDate create: " + listReminder.get(i).getDateString()
-					+ "\tDateReamaider: " + listReminder.get(i).getDateReminder() + "\nRemaider:\n"
-					+ listReminder.get(i).getReminder() + "\n\n";
+			string = string + "ID:" + listReminder.get(i).getId() + "\tDate create: "
+					+ listReminder.get(i).getDateString() + "\tDateReamaider: " + listReminder.get(i).getDateReminder()
+					+ "\nRemaider:\n" + listReminder.get(i).getReminder() + "\n\n";
 		}
 		return "\n\n\n*******Reamaiders******\n\n" + string + "\n***********************\n";
 	}
@@ -67,15 +70,16 @@ public class Notebook {
 				continue;
 			} else {
 				string = string + "ID:" + listReminder.get(i).getId() + "\tDate create: "
-						+ listReminder.get(i).getDateString() + "\tDateReamaider: " + listReminder.get(i).getDateReminder()
-						+ "\nRemaider:\n" + listReminder.get(i).getReminder() + "\n\n";
+						+ listReminder.get(i).getDateString() + "\tDateReamaider: "
+						+ listReminder.get(i).getDateReminder() + "\nRemaider:\n" + listReminder.get(i).getReminder()
+						+ "\n\n";
 				System.out.println(string);
 			}
 		}
 	}
 
 	public void removeNote(long id) {
-		
+
 		for (int i = 0; i < listNote.size(); i++) {
 			if (listNote.get(i).getId() != id) {
 				continue;
@@ -87,7 +91,7 @@ public class Notebook {
 	}
 
 	public void removeReminder(long id) {
-		
+
 		for (int i = 0; i < listReminder.size(); i++) {
 			if (listNote.get(i).getId() != id) {
 				continue;
@@ -108,17 +112,49 @@ public class Notebook {
 			}
 		}
 	}
-	//FIXME
+
 	public void overwriteReminder(long id) {
-		
 		for (int i = 0; i < listReminder.size(); i++) {
 			if (listReminder.get(i).getId() != id) {
 				continue;
 			} else {
 				System.out.println("Reminder: " + listReminder.get(i).getId() + " ready to overwrite\n\n");
 				listReminder.get(i).writeReminder();
+				System.out.println("Do you want to change the reminder date? (y/n)");
+
+				while (true) {
+					String answer = scNB.nextLine();
+					switch (answer) {
+					case "y":
+						listReminder.get(i).writeDateReminder();
+						break;
+					case "n":
+						return;
+					default:
+						break;
+					}
+				}
 			}
 		}
+	}
+
+	public void showAll() {
+		// TODO
+		String dateBegin, dateEnd;
+		dateBegin = scNB.nextLine();
+		dateEnd = scNB.nextLine();
+
+	}
+
+	public static String dateControl(String dateString) {
+		// TODO
+		return dateString;
+	}
+	
+	private static String parsingDate(Date date){
+		String dateString = "0000.00.00 00:00";
+		//TODO
+		return dateString;
 	}
 
 }

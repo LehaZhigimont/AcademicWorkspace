@@ -49,5 +49,10 @@ public class Note {
 		return text;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+
 	
 }

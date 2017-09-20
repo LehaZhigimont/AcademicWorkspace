@@ -60,13 +60,13 @@ public class TreeShagoSet<OTHER_TYPE> implements ShagoSet<OTHER_TYPE> {
 
 	@Override
 	public void remove(OTHER_TYPE element) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public boolean contains(OTHER_TYPE element) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
