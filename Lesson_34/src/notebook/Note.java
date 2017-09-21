@@ -23,7 +23,7 @@ public class Note {
 		date = new Date();
 		Date dNote = new Date();
 		this.dateString = "" + (dNote.getYear()+1900) + "." + (dNote.getMonth()+1) + "." + dNote.getDay() + " "
-				+ (dNote.getHours()+1) + ":" + dNote.getMinutes() + "\t";
+				+ (dNote.getHours()) + ":" + dNote.getMinutes() + "\t";
 		dNote = null;
 		this.id = countID;
 	}

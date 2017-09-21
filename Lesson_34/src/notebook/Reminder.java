@@ -22,11 +22,12 @@ public class Reminder {
 		System.out.println("Enter reminder:\n");
 		writeReminder();
 		writeDateReminder();
+		
 		date = new Date();
 		Date dRemainder = new Date();
 
 		this.dateString = "" + (dRemainder.getYear() + 1900) + "." + (dRemainder.getMonth() + 1) + "."
-				+ dRemainder.getDay() + " " + (dRemainder.getHours() + 1) + ":" + dRemainder.getMinutes() + "\t";
+				+ dRemainder.getDay() + " " + (dRemainder.getHours()) + ":" + dRemainder.getMinutes() + "\t";
 		dRemainder = null;
 		this.id = countID;
 	}
